@@ -32,15 +32,30 @@
 </head>
 <body id="top" class="flex justify-center p-4 sm:p-8 antialiased min-h-screen selection:bg-white/20">
 
-<div class="w-full max-w-[540px] bg-[#18181b] border border-white/10 rounded-[32px] flex flex-col h-fit shadow-2xl overflow-hidden relative">
+<div class="w-full max-w-[540px] bg-[#18181b] border border-white/10 rounded-[32px] flex flex-col h-fit shadow-2xl relative">
     
     <!-- Header -->
-    <header class="flex justify-between items-center px-6 py-5 border-b border-white/5 bg-[#18181b]/50 backdrop-blur-xl z-10 sticky top-0">
-        <nav class="flex items-center gap-5">
-            <button id="nav-home" onclick="switchTab('home')" class="nav-btn material-symbols-outlined text-[22px] text-white hover:text-white cursor-pointer transition-colors" title="Home">home</button>
-            <button id="nav-about" onclick="switchTab('about')" class="nav-btn material-symbols-outlined text-[22px] text-zinc-400 hover:text-white cursor-pointer transition-colors" title="About">person</button>
-            <button id="nav-projects" onclick="switchTab('projects')" class="nav-btn material-symbols-outlined text-[22px] text-zinc-400 hover:text-white cursor-pointer transition-colors" title="Projects">web_asset</button>
-            <button id="nav-shop" onclick="switchTab('shop')" class="nav-btn material-symbols-outlined text-[22px] text-zinc-400 hover:text-white cursor-pointer transition-colors" title="Products">shopping_bag</button>
+    <header id="main-header" class="flex justify-between items-center px-6 py-5 border-b border-white/5 bg-[#18181b]/50 backdrop-blur-xl z-50 sticky top-0 rounded-t-[32px] transition-transform duration-300">
+        <nav class="flex items-center gap-1 sm:gap-2 relative" id="main-nav" onmouseleave="resetNavIndicator()">
+            <!-- Sliding Indicator -->
+            <div id="nav-indicator" class="absolute h-10 bg-white/10 rounded-xl transition-all duration-300 pointer-events-none opacity-0" style="left: 0; top: 50%; transform: translateY(-50%); transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);"></div>
+            
+            <button id="nav-home" onclick="switchTab('home')" onmouseenter="moveIndicator(this)" class="group nav-btn w-10 h-10 flex items-center justify-center text-white transition-all duration-200 relative z-10 active:scale-90" title="Home">
+                <span class="material-symbols-outlined text-[22px]">home</span>
+                <span class="absolute -top-4 group-hover:-top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#2a2a2c]/90 backdrop-blur-md border border-white/10 rounded-full text-zinc-200 text-[11px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out pointer-events-none whitespace-nowrap shadow-xl font-sans tracking-wide">Home</span>
+            </button>
+            <button id="nav-about" onclick="switchTab('about')" onmouseenter="moveIndicator(this)" class="group nav-btn w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200 relative z-10 active:scale-90" title="About">
+                <span class="material-symbols-outlined text-[22px]">person</span>
+                <span class="absolute -top-4 group-hover:-top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#2a2a2c]/90 backdrop-blur-md border border-white/10 rounded-full text-zinc-200 text-[11px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out pointer-events-none whitespace-nowrap shadow-xl font-sans tracking-wide">About</span>
+            </button>
+            <button id="nav-projects" onclick="switchTab('projects')" onmouseenter="moveIndicator(this)" class="group nav-btn w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200 relative z-10 active:scale-90" title="Projects">
+                <span class="material-symbols-outlined text-[22px]">web_asset</span>
+                <span class="absolute -top-4 group-hover:-top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#2a2a2c]/90 backdrop-blur-md border border-white/10 rounded-full text-zinc-200 text-[11px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out pointer-events-none whitespace-nowrap shadow-xl font-sans tracking-wide">Projects</span>
+            </button>
+            <button id="nav-shop" onclick="switchTab('shop')" onmouseenter="moveIndicator(this)" class="group nav-btn w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200 relative z-10 active:scale-90" title="Products">
+                <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                <span class="absolute -top-4 group-hover:-top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#2a2a2c]/90 backdrop-blur-md border border-white/10 rounded-full text-zinc-200 text-[11px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out pointer-events-none whitespace-nowrap shadow-xl font-sans tracking-wide">Products</span>
+            </button>
         </nav>
         <div class="flex items-center gap-4">
             <button onclick="showToast('Theme switcher coming soon!')" class="material-symbols-outlined text-[20px] text-zinc-400 hover:text-white cursor-pointer transition-colors">light_mode</button>
@@ -441,7 +456,7 @@
         </div>
 
         <!-- Footer Background Block -->
-        <div class="bg-[#111113] p-6 sm:p-8 flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center w-full mt-auto border-t border-white/5">
+        <div class="bg-[#111113] p-6 sm:p-8 flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center w-full mt-auto border-t border-white/5 rounded-b-[32px]">
             <div class="flex flex-col items-start text-left">
                 <p class="text-zinc-500 text-[11px] mb-2 font-medium">© 2023 Subtle Folio - Framer Template</p>
                 <p class="text-zinc-500 text-[11px] font-medium flex flex-wrap gap-1">
@@ -473,8 +488,52 @@
 </div>
 
 <script>
+    let activeTabId = 'home';
+
+    // Navbar Animation Logic
+    function moveIndicator(element) {
+        const indicator = document.getElementById('nav-indicator');
+        const nav = document.getElementById('main-nav');
+        if (!indicator || !nav) return;
+        
+        const navRect = nav.getBoundingClientRect();
+        const elRect = element.getBoundingClientRect();
+        
+        const left = elRect.left - navRect.left;
+        
+        indicator.style.transform = `translate(${left}px, -50%)`;
+        indicator.style.width = `${elRect.width}px`;
+        indicator.style.opacity = '1';
+    }
+
+    function resetNavIndicator() {
+        const activeNav = document.getElementById(`nav-${activeTabId}`);
+        const indicator = document.getElementById('nav-indicator');
+        if (!indicator) return;
+        
+        if (activeNav) {
+            const nav = document.getElementById('main-nav');
+            const navRect = nav.getBoundingClientRect();
+            const elRect = activeNav.getBoundingClientRect();
+            
+            const left = elRect.left - navRect.left;
+            
+            indicator.style.transform = `translate(${left}px, -50%)`;
+            indicator.style.width = `${elRect.width}px`;
+            indicator.style.opacity = '1';
+        } else {
+            indicator.style.opacity = '0';
+        }
+    }
+
+    // Initialize indicator on load
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(resetNavIndicator, 100);
+    });
+
     // Tab Switching Logic
     function switchTab(tabId) {
+        activeTabId = tabId;
         // Hide all views
         document.querySelectorAll('.tab-view').forEach(el => {
             el.classList.add('hidden');
@@ -495,6 +554,8 @@
             activeNav.classList.remove('text-zinc-400');
             activeNav.classList.add('text-white');
         }
+
+        resetNavIndicator();
 
         // Toggle Let's Work Together block visibility
         const letsWorkBlock = document.getElementById('lets-work-together-block');
@@ -539,6 +600,23 @@
             showToast('Email address copied to clipboard!');
         });
     }
+
+    // Smart Navbar logic (hide on scroll down, show on scroll up)
+    let lastScrollY = window.scrollY;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+        if (!header) return;
+        
+        if (window.scrollY > lastScrollY && window.scrollY > 80) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up or at the top
+            header.style.transform = 'translateY(0)';
+        }
+        lastScrollY = window.scrollY;
+    }, { passive: true });
 </script>
 
 </body>
