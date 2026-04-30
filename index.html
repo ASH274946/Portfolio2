@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL,GRAD,opsz@300,0,0,20&display=swap" rel="stylesheet"/>
+<style>
+    body { 
+        background-color: #0f0f0f; 
+        color: #e4e4e7;
+        font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined { 
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20; 
+    }
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #3f3f46;
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #52525b;
+    }
+</style>
+</head>
+<body id="top" class="flex justify-center p-4 sm:p-8 antialiased min-h-screen selection:bg-white/20">
+
+<div class="w-full max-w-[540px] bg-[#18181b] border border-white/10 rounded-[32px] flex flex-col h-fit shadow-2xl overflow-hidden relative">
+    
+    <!-- Header -->
+    <header class="flex justify-between items-center px-6 py-5 border-b border-white/5 bg-[#18181b]/50 backdrop-blur-xl z-10 sticky top-0">
+        <nav class="flex items-center gap-5">
+            <button id="nav-home" onclick="switchTab('home')" class="nav-btn material-symbols-outlined text-[22px] text-white hover:text-white cursor-pointer transition-colors" title="Home">home</button>
+            <button id="nav-about" onclick="switchTab('about')" class="nav-btn material-symbols-outlined text-[22px] text-zinc-400 hover:text-white cursor-pointer transition-colors" title="About">person</button>
+            <button id="nav-projects" onclick="switchTab('projects')" class="nav-btn material-symbols-outlined text-[22px] text-zinc-400 hover:text-white cursor-pointer transition-colors" title="Projects">web_asset</button>
+            <button id="nav-shop" onclick="switchTab('shop')" class="nav-btn material-symbols-outlined text-[22px] text-zinc-400 hover:text-white cursor-pointer transition-colors" title="Products">shopping_bag</button>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button onclick="showToast('Theme switcher coming soon!')" class="material-symbols-outlined text-[20px] text-zinc-400 hover:text-white cursor-pointer transition-colors">light_mode</button>
+        </div>
+    </header>
+
+    <!-- VIEWS CONTAINER -->
+    <main class="flex flex-col">
+        
+        <!-- ================= HOME VIEW ================= -->
+        <div id="view-home" class="tab-view p-6 sm:p-8 flex flex-col gap-12">
+            
+            <!-- Hero Section -->
+            <section class="flex justify-between items-start gap-4">
+                <div class="flex flex-col">
+                    <!-- Badges -->
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="flex items-center gap-2 text-zinc-400 text-[13px] font-medium">
+                            <div class="w-1.5 h-1.5 rounded-full bg-zinc-500"></div> Software Dev
+                        </div>
+                        <div class="flex items-center gap-1.5 px-2.5 py-1 bg-[#0a2717] border border-[#144b2c] rounded-full">
+                            <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
+                            <span class="text-[10px] font-semibold text-[#4ade80] tracking-wide uppercase">Available for work</span>
+                        </div>
+                    </div>
+                    
+                    <h1 class="text-[36px] sm:text-[40px] font-bold text-white mb-3 tracking-tight leading-none">I'm Brian Do</h1>
+                    <p class="text-zinc-400 text-[15px] leading-[1.6] max-w-[260px] mb-6">
+                        Software Developer from Jakarta, ID. Currently engineering at Rectangle.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="switchTab('hire')" class="flex items-center gap-2 bg-white/10 border border-white/10 hover:bg-white/15 px-4 py-2 rounded-xl text-sm font-medium text-white transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">add_circle</span> Hire Me
+                        </button>
+                        <button onclick="copyEmail()" class="flex items-center gap-2 bg-transparent border border-white/10 hover:bg-white/5 px-4 py-2 rounded-xl text-sm font-medium text-white transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">content_copy</span> Copy Email
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="w-28 h-28 sm:w-32 sm:h-32 shrink-0 rounded-full overflow-hidden border border-white/10 bg-zinc-800 flex items-center justify-center p-1 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=250&auto=format&fit=crop" alt="Brian Do" class="w-full h-full rounded-full object-cover" />
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="flex flex-col gap-3">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2 text-zinc-400 text-[14px] font-medium">
+                        <div class="w-1.5 h-1.5 rounded-full bg-zinc-500"></div> Projects
+                    </div>
+                    <button onclick="switchTab('projects')" class="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-zinc-300 uppercase tracking-wider transition-colors">
+                        View All <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </button>
+                </div>
+                
+                <a href="#" onclick="showToast('Opening Morva labs...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-[#0f172a] border border-[#1e293b] flex items-center justify-center shrink-0 text-white font-bold text-xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20"></div>
+                        <span class="relative z-10 drop-shadow-md">M</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Morva labs</h3>
+                        <p class="text-zinc-500 text-[13px]">Visual design, Branding</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+                
+                <a href="#" onclick="showToast('Opening Rectangle...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] flex items-center justify-center shrink-0 border border-white/10 p-2.5">
+                        <div class="w-full h-full border-[2.5px] border-white rounded-md"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Rectangle</h3>
+                        <p class="text-zinc-500 text-[13px]">Product design, Icon design</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+                
+                <a href="#" onclick="showToast('Opening Simply...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#ff8e53] flex items-center justify-center shrink-0 border border-white/10 text-white shadow-inner">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Simply</h3>
+                        <p class="text-zinc-500 text-[13px]">Landing page, Illustration design</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+            </section>
+
+            <!-- Products Section -->
+            <section class="flex flex-col gap-3">
+                <div class="flex items-center gap-2 text-zinc-400 text-[14px] font-medium mb-2">
+                    <div class="w-1.5 h-1.5 rounded-full bg-zinc-500"></div> Products
+                </div>
+                
+                <a href="#" onclick="showToast('Navigating to Portafo template...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0">
+                        <span class="font-bold text-black text-sm">P</span>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Portafo</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                
+                <a href="#" onclick="showToast('Navigating to Faktur Invoice...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-white/10">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H8V20H4V4Z" fill="white"/>
+                            <path d="M10 8H14V20H10V8Z" fill="white"/>
+                            <path d="M16 12H20V20H16V12Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Faktur Invoice</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+
+                <a href="#" onclick="showToast('Navigating to Goven template...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#4f46e5] flex items-center justify-center shrink-0 text-white font-bold text-[15px]">G</div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Goven</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+
+                <a href="#" onclick="showToast('Navigating to Subtle Folio...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#f3d9c6] flex items-center justify-center shrink-0 overflow-hidden border border-[#d4b9a6]">
+                        <span class="material-symbols-outlined text-[#8a6a55]" style="font-variation-settings: 'FILL' 1;">face</span>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Subtle Folio</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+            </section>
+        </div>
+
+
+        <!-- ================= ABOUT VIEW ================= -->
+        <div id="view-about" class="tab-view hidden p-6 sm:p-8 flex flex-col">
+            <div class="flex items-center gap-2 text-zinc-400 text-[14px] font-medium mb-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-zinc-500"></div> About
+            </div>
+            
+            <h1 class="text-[36px] sm:text-[40px] font-bold text-white mb-6 tracking-tight leading-none">It's Me Brian</h1>
+            
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-8">
+                I'm Brian Do, a software developer with over 5 years of experience, currently residing in Jakarta, Indonesia. I have a deep passion for crafting purposeful interfaces and products. My main goal is to bridge the divide between people and technology, transforming intricate challenges into meaningful and seamless experiences.
+            </p>
+
+            <div class="w-full rounded-[24px] overflow-hidden mb-10 border border-white/10 bg-zinc-800">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Brian" class="w-full h-auto aspect-[4/3] object-cover" />
+            </div>
+
+            <h2 class="text-[24px] font-bold text-white mb-4">More About Me</h2>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-6">
+                Brian Do holds a bachelor's degree in Computer Science from a prestigious university in the United States and has a relentless drive for staying up-to-date with the latest technologies and development trends. Actively involved in the developer community, Brian regularly participates in diverse tech conferences and meetups.
+            </p>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-10">
+                When he's not immersed in coding, he finds solace in playing the guitar and exploring new coffee shops in his local area. Brian firmly believes in maintaining a healthy work-life balance, making sure to take breaks and reenergize his creativity. In his spare time, he also volunteers at a local animal shelter on weekends.
+            </p>
+
+            <h2 class="text-[24px] font-bold text-white mb-4">My Side Projects</h2>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-6">
+                I did passion side projects in the weekend, please take a look you will love it (I hope).
+            </p>
+
+            <div class="flex flex-col gap-3 mb-4">
+                <a href="#" onclick="showToast('Navigating to Goven...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#4f46e5] flex items-center justify-center shrink-0 text-white font-bold text-[15px]">G</div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Goven</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Upshift...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-white/10 text-white">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H8V20H4V4Z" fill="white"/><path d="M10 8H14V20H10V8Z" fill="white"/><path d="M16 12H20V20H16V12Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Upshift</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Web Design Collections</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Subtle Folio...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#f3d9c6] flex items-center justify-center shrink-0 overflow-hidden border border-[#d4b9a6]">
+                        <span class="material-symbols-outlined text-[#8a6a55]" style="font-variation-settings: 'FILL' 1;">face</span>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Subtle Folio</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ================= PROJECTS VIEW ================= -->
+        <div id="view-projects" class="tab-view hidden p-6 sm:p-8 flex flex-col">
+            <div class="flex items-center gap-2 text-zinc-400 text-[14px] font-medium mb-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-zinc-500"></div> Projects
+            </div>
+            
+            <h1 class="text-[36px] sm:text-[40px] font-bold text-white mb-4 tracking-tight leading-none">My Works</h1>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-10">
+                Discover my portfolio, where purposeful interfaces meet captivating design. My work strives to enhance experiences and inspire.
+            </p>
+
+            <div class="flex flex-col gap-3 mb-12">
+                <a href="#" onclick="showToast('Opening Morva labs...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-[#0f172a] border border-[#1e293b] flex items-center justify-center shrink-0 text-white font-bold text-xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20"></div>
+                        <span class="relative z-10 drop-shadow-md">M</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Morva labs</h3>
+                        <p class="text-zinc-500 text-[13px]">Visual design, Branding</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+                
+                <a href="#" onclick="showToast('Opening Rectangle...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] flex items-center justify-center shrink-0 border border-white/10 p-2.5">
+                        <div class="w-full h-full border-[2.5px] border-white rounded-md"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Rectangle</h3>
+                        <p class="text-zinc-500 text-[13px]">Product design, Icon design</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+                
+                <a href="#" onclick="showToast('Opening Simply...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#ff8e53] flex items-center justify-center shrink-0 border border-white/10 text-white shadow-inner">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Simply</h3>
+                        <p class="text-zinc-500 text-[13px]">Landing page, Illustration design</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+
+                <a href="#" onclick="showToast('Opening Glassdoor...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-[#0284c7] flex items-center justify-center shrink-0 border border-white/10 text-white">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Glassdoor</h3>
+                        <p class="text-zinc-500 text-[13px]">Icon design, Illustration design</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+
+                <a href="#" onclick="showToast('Opening Seven LTD...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-full bg-[#a855f7] flex items-center justify-center shrink-0 border border-white/10 text-white font-bold text-xl">
+                        7
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-zinc-100 font-semibold text-[16px] mb-0.5">Seven LTD.</h3>
+                        <p class="text-zinc-500 text-[13px]">Branding, Landing page</p>
+                    </div>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors">chevron_right</span>
+                </a>
+            </div>
+
+            <h2 class="text-[26px] font-bold text-white mb-4 tracking-tight">Explore My Products</h2>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-6">
+                Some of the digital products that I worked on as side projects, explore them now
+            </p>
+            
+            <div class="flex flex-col gap-3 mb-4">
+                <a href="#" onclick="showToast('Navigating to Portafo...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0"><span class="font-bold text-black text-sm">P</span></div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Portafo</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Faktur Invoice...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-white/10">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H8V20H4V4Z" fill="white"/><path d="M10 8H14V20H10V8Z" fill="white"/><path d="M16 12H20V20H16V12Z" fill="white"/></svg>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Faktur Invoice</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Goven...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#4f46e5] flex items-center justify-center shrink-0 text-white font-bold text-[15px]">G</div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Goven</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Subtle Folio...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#f3d9c6] flex items-center justify-center shrink-0 overflow-hidden border border-[#d4b9a6]">
+                        <span class="material-symbols-outlined text-[#8a6a55]" style="font-variation-settings: 'FILL' 1;">face</span>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Subtle Folio</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ================= SHOP VIEW ================= -->
+        <div id="view-shop" class="tab-view hidden p-6 sm:p-8 flex flex-col">
+            <div class="flex items-center gap-2 text-zinc-400 text-[14px] font-medium mb-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-zinc-500"></div> Products
+            </div>
+            
+            <h1 class="text-[36px] sm:text-[40px] font-bold text-white mb-4 tracking-tight leading-none">Digital Products</h1>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-10">
+                Premium digital products, framer templates, and web design collections curated for creators and developers.
+            </p>
+            
+            <div class="flex flex-col gap-3 mb-4">
+                <a href="#" onclick="showToast('Navigating to Portafo...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0"><span class="font-bold text-black text-sm">P</span></div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Portafo</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Faktur Invoice...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-white/10">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H8V20H4V4Z" fill="white"/><path d="M10 8H14V20H10V8Z" fill="white"/><path d="M16 12H20V20H16V12Z" fill="white"/></svg>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Faktur Invoice</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Goven...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#4f46e5] flex items-center justify-center shrink-0 text-white font-bold text-[15px]">G</div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Goven</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Upshift...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-white/10 text-white">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H8V20H4V4Z" fill="white"/><path d="M10 8H14V20H10V8Z" fill="white"/><path d="M16 12H20V20H16V12Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Upshift</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Web Design Collections</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+                <a href="#" onclick="showToast('Navigating to Subtle Folio...'); return false;" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group">
+                    <div class="w-8 h-8 rounded-full bg-[#f3d9c6] flex items-center justify-center shrink-0 overflow-hidden border border-[#d4b9a6]">
+                        <span class="material-symbols-outlined text-[#8a6a55]" style="font-variation-settings: 'FILL' 1;">face</span>
+                    </div>
+                    <h3 class="text-zinc-100 font-semibold text-[15px] flex-1">Subtle Folio</h3>
+                    <span class="text-[9px] font-bold text-zinc-400 bg-white/5 px-2 py-1 rounded-md border border-white/10 uppercase tracking-widest">Framer Template</span>
+                    <span class="material-symbols-outlined text-zinc-600 group-hover:text-zinc-400 transition-colors text-[20px]">north_east</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ================= HIRE VIEW ================= -->
+        <div id="view-hire" class="tab-view hidden p-6 sm:p-8 flex flex-col">
+            <h1 class="text-[36px] sm:text-[40px] font-bold text-white mb-3 tracking-tight leading-none pt-2">Design Inquiry</h1>
+            <p class="text-zinc-400 text-[15px] leading-relaxed mb-8">
+                Got an idea and need design help? Reach out now
+            </p>
+            
+            <form onsubmit="event.preventDefault(); showToast('Message sent successfully!'); setTimeout(() => switchTab('home'), 1500);" class="flex flex-col gap-4 mb-4">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" placeholder="Name" required class="flex-1 bg-transparent border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-[14px] focus:outline-none focus:border-white/20 transition-colors" />
+                    <input type="email" placeholder="Email Address" required class="flex-1 bg-transparent border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-[14px] focus:outline-none focus:border-white/20 transition-colors" />
+                </div>
+                <textarea placeholder="Message" required rows="5" class="w-full bg-transparent border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-[14px] focus:outline-none focus:border-white/20 transition-colors resize-none"></textarea>
+                <button type="submit" class="w-full bg-[#262626] hover:bg-[#333333] text-white font-medium py-3 rounded-xl text-[14px] transition-colors mt-2 border border-white/5">
+                    Submit
+                </button>
+            </form>
+        </div>
+
+        
+        <!-- ================= SHARED BOTTOM SECTION ================= -->
+        <div class="px-6 sm:px-8 pb-6 flex flex-col">
+            <!-- Let's Work Together -->
+            <div id="lets-work-together-block">
+                <section class="flex flex-col items-center text-center mt-6 mb-12">
+                    <h2 class="text-[32px] sm:text-[36px] font-bold text-white mb-3 tracking-tight font-display">Let's work together.</h2>
+                    <p class="text-zinc-400 text-[15px] leading-relaxed max-w-[320px] mb-8">
+                        Creating user experience and visual appealing design
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3 w-full">
+                        <button onclick="switchTab('hire')" class="flex items-center gap-2 bg-white/10 border border-white/10 hover:bg-white/15 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">add_circle</span> Hire Me
+                        </button>
+                        <button onclick="copyEmail()" class="flex items-center gap-2 bg-transparent border border-white/10 hover:bg-white/5 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">content_copy</span> Copy Email
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Follow Me removed as per user request -->
+        </div>
+
+        <!-- Footer Background Block -->
+        <div class="bg-[#111113] p-6 sm:p-8 flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center w-full mt-auto border-t border-white/5">
+            <div class="flex flex-col items-start text-left">
+                <p class="text-zinc-500 text-[11px] mb-2 font-medium">© 2023 Subtle Folio - Framer Template</p>
+                <p class="text-zinc-500 text-[11px] font-medium flex flex-wrap gap-1">
+                    by <a href="#" class="text-zinc-300 hover:text-white transition-colors underline decoration-white/20 underline-offset-[3px]">Nur Praditya</a> / 
+                    <a href="#" class="text-zinc-300 hover:text-white transition-colors underline decoration-white/20 underline-offset-[3px]">MorvaLabs</a> / 
+                    <a href="#" class="text-zinc-300 hover:text-white transition-colors underline decoration-white/20 underline-offset-[3px]">Framer</a>
+                </p>
+            </div>
+            <div class="flex gap-2.5">
+                <a href="#" onclick="showToast('GitHub profile'); return false;" class="w-[34px] h-[34px] rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+                <a href="#" onclick="showToast('X profile'); return false;" class="w-[34px] h-[34px] rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
+                    <span class="text-[13px] font-bold">X</span>
+                </a>
+                <a href="#" onclick="showToast('LinkedIn profile'); return false;" class="w-[34px] h-[34px] rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
+                    <span class="text-[14px] font-bold font-serif">in</span>
+                </a>
+            </div>
+        </div>
+        
+    </main>
+</div>
+
+<!-- Toast Notification System -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#18181b] border border-white/10 text-white px-5 py-3 rounded-2xl shadow-2xl text-sm transition-all duration-300 opacity-0 translate-y-4 pointer-events-none z-50 flex items-center gap-3">
+    <span class="material-symbols-outlined text-green-400 text-[20px]">check_circle</span>
+    <span id="toast-message" class="font-medium">Action successful!</span>
+</div>
+
+<script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+        // Hide all views
+        document.querySelectorAll('.tab-view').forEach(el => {
+            el.classList.add('hidden');
+        });
+        
+        // Show target view
+        document.getElementById(`view-${tabId}`).classList.remove('hidden');
+        
+        // Update nav icons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('text-white');
+            btn.classList.add('text-zinc-400');
+        });
+        
+        // Highlight active nav icon
+        const activeNav = document.getElementById(`nav-${tabId}`);
+        if(activeNav) {
+            activeNav.classList.remove('text-zinc-400');
+            activeNav.classList.add('text-white');
+        }
+
+        // Toggle Let's Work Together block visibility
+        const letsWorkBlock = document.getElementById('lets-work-together-block');
+        if(letsWorkBlock) {
+            if(tabId === 'hire') {
+                letsWorkBlock.classList.add('hidden');
+            } else {
+                letsWorkBlock.classList.remove('hidden');
+            }
+        }
+        
+        // Smooth scroll back to top of container
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toast functionality
+    function showToast(message, icon = 'check_circle', colorClass = 'text-green-400') {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-message');
+        const toastIcon = toast.querySelector('.material-symbols-outlined');
+        
+        toastMsg.textContent = message;
+        toastIcon.textContent = icon;
+        toastIcon.className = `material-symbols-outlined text-[20px] ${colorClass}`;
+        
+        toast.classList.remove('opacity-0', 'translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        
+        if(window.toastTimeout) clearTimeout(window.toastTimeout);
+        
+        window.toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', 'translate-y-4');
+        }, 2500);
+    }
+
+    // Clipboard copy
+    function copyEmail() {
+        navigator.clipboard.writeText('brian@example.com').then(() => {
+            showToast('Email address copied to clipboard!');
+        }).catch(err => {
+            showToast('Email address copied to clipboard!');
+        });
+    }
+</script>
+
+</body>
+</html>
