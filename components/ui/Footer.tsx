@@ -13,7 +13,7 @@ const QUOTES = [
 ];
 
 export default function Footer() {
-  const [quoteIndex] = useState(() => Math.floor(Math.random() * QUOTES.length));
+  const [quoteIndex, setQuoteIndex] = useState(0);
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
   useEffect(() => {
@@ -29,6 +29,13 @@ export default function Footer() {
     };
 
     fetchCount();
+
+    // Rotate quote after mount to avoid SSR/client hydration mismatch.
+    const quoteTimer = window.setInterval(() => {
+      setQuoteIndex((i) => (i + 1) % QUOTES.length);
+    }, 8000);
+
+    return () => window.clearInterval(quoteTimer);
   }, []);
 
   const visitorLabel = visitorCount ? visitorCount.toLocaleString("en-IN") : "--";

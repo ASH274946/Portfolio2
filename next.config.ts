@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "ghchart.rshah.org",
+        hostname: "github.com",
         pathname: "/**",
       },
     ],

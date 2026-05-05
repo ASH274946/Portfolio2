@@ -47,9 +47,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} h-full font-mono antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-black text-zinc-200">
+      <body suppressHydrationWarning className="flex min-h-full flex-col bg-black text-zinc-200">
         <SiteBackdrop />
         <Navbar />
         <main className="relative z-10 flex-1">{children}</main>

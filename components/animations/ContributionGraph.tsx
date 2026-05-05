@@ -11,6 +11,8 @@ type GithubStats = {
   stars: number;
   contributions: number | null;
   periodLabel: string;
+  fromDate: string;
+  toDate: string;
 };
 
 export default function ContributionGraph() {
@@ -47,7 +49,7 @@ export default function ContributionGraph() {
           className="inline-block min-w-[760px] md:min-w-0 md:w-full"
         >
           <Image
-            src="https://ghchart.rshah.org/6b7280/KiranTejz20005"
+            src={`/api/github/contributions?from=${stats?.fromDate ?? "2025-01-01"}&to=${stats?.toDate ?? "2026-01-01"}`}
             alt="GitHub contribution graph for KiranTejz20005"
             width={780}
             height={126}
