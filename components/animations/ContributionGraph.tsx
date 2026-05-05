@@ -9,6 +9,8 @@ type GithubStats = {
   followers: number;
   repos: number;
   stars: number;
+  contributions: number | null;
+  periodLabel: string;
 };
 
 export default function ContributionGraph() {
@@ -36,34 +38,36 @@ export default function ContributionGraph() {
   }, []);
 
   return (
-    <div className="flex w-max max-w-full flex-col gap-2">
-      <div className="max-w-full overflow-x-auto overflow-y-hidden pb-2">
+    <div className="flex w-full max-w-full flex-col gap-2">
+      <div className="w-full overflow-x-auto overflow-y-hidden pb-2">
         <a
           href="https://github.com/KiranTejz20005"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block min-w-max"
+          className="inline-block min-w-[760px] md:min-w-0 md:w-full"
         >
           <Image
             src="https://ghchart.rshah.org/6b7280/KiranTejz20005"
             alt="GitHub contribution graph for KiranTejz20005"
             width={780}
             height={126}
-            className="max-w-none rounded-md border border-zinc-800/60 bg-black/20 p-2 grayscale"
+            className="h-auto w-[760px] max-w-none rounded-md border border-zinc-800/60 bg-black/20 p-2 grayscale md:w-full md:max-w-full"
             unoptimized
           />
         </a>
       </div>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-zinc-600">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[11px] text-zinc-600">
         <span>
-          Followers <span className="text-zinc-400">{stats?.followers ?? "--"}</span>
+          <span className="font-semibold text-zinc-300">{stats?.contributions?.toLocaleString("en-IN") ?? "--"}</span>{" "}
+          contributions in {stats?.periodLabel ?? "last year"}
         </span>
-        <span>
-          Repositories <span className="text-zinc-400">{stats?.repos ?? "--"}</span>
-        </span>
-        <span>
-          Stars <span className="text-zinc-400">{stats?.stars ?? "--"}</span>
-        </span>
+        <div className="ml-auto flex items-center gap-1.5">
+          <span>Less</span>
+          {["#18181b", "#27272a", "#3f3f46", "#52525b", "#a1a1aa"].map((c) => (
+            <span key={c} className="h-[10px] w-[10px] rounded-[2px]" style={{ backgroundColor: c }} />
+          ))}
+          <span>More</span>
+        </div>
       </div>
     </div>
   );
