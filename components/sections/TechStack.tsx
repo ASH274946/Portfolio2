@@ -7,13 +7,13 @@ import { techStack } from "@/lib/data";
 export default function TechStackSection() {
   return (
     <motion.section
-      className="mx-auto max-w-3xl px-6 py-16 lg:px-0 md:py-24"
+      className="mx-auto max-w-3xl px-6 py-10 lg:px-0 md:py-12"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <h2 className="font-inter mb-8 text-2xl font-semibold text-zinc-100 md:text-[28px]">Tech Stack</h2>
+      <h2 className="font-inter mb-6 text-2xl font-semibold text-zinc-100 md:text-[28px]">Tech Stack</h2>
       <div className="grid grid-cols-6 gap-3 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12">
         {techStack.map((t, i) => (
           <motion.div

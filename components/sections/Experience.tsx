@@ -7,7 +7,7 @@ import { experience } from "@/lib/data";
 export default function ExperienceSection() {
   return (
     <motion.section
-      className="mx-auto max-w-3xl px-6 py-16 lg:px-0 md:py-24"
+      className="mx-auto max-w-3xl px-6 py-10 lg:px-0 md:py-12"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
