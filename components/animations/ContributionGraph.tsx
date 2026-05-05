@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
 function formatGitHubTooltipDate(isoDate: string) {
@@ -14,6 +15,20 @@ function formatGitHubTooltipDate(isoDate: string) {
 }
 
 export default function ContributionGraph() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="w-full overflow-x-auto overflow-y-hidden">
+        <div className="min-w-[760px] text-zinc-500 md:min-w-0 h-48" />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full overflow-x-auto overflow-y-hidden">
       <div className="min-w-[760px] text-zinc-500 md:min-w-0">
