@@ -61,7 +61,7 @@ function SocialButton({
 
 export default function Hero() {
   return (
-    <section className="mb-0 min-h-screen pb-12 pt-28 md:pt-36">
+    <section className="mb-0 min-h-screen pb-8 pt-24 md:pt-32">
       <div className="mx-auto w-full max-w-3xl px-6 lg:px-0">
         <div className="mb-6 flex flex-row items-start gap-3.5 md:mb-8 md:gap-4">
           <Image
@@ -192,22 +192,14 @@ export default function Hero() {
             <SocialButton href="mailto:kiranlanke824@gmail.com" label="Email" external>
               <Mail width={18} height={18} strokeWidth={2} />
             </SocialButton>
-
-            <div className="mx-0.5 hidden h-5 w-px bg-zinc-800 sm:block" />
-
-            <div className="hidden sm:block">
-              <SocialButton href="/#contact" label="Contact">
-                <Mail width={18} height={18} strokeWidth={2} />
-              </SocialButton>
-            </div>
           </div>
         </div>
 
-        <div className="mt-8 duration-300 sm:mt-10">
+        <div className="mt-6 duration-300 sm:mt-8">
           <SpotifyCard />
         </div>
 
-        <div className="mt-12 md:mt-14">
+        <div className="mt-8 md:mt-10">
           <ContributionGraph />
         </div>
       </div>

@@ -84,8 +84,8 @@ body {
 }
 
 ::selection {
-  background: #1a2e1a;
-  color: #4ade80;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
 }
 
 /* Social / icon tooltips (group-hover) */
