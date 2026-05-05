@@ -16,11 +16,8 @@ export default function TechIcon({ name, slug, size = 28 }: Props) {
   const si = techIconSrc(slug);
 
   return (
-    <div className="group flex cursor-default flex-col items-center">
-      <div
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800/80 bg-zinc-900/60 transition-all duration-200 ease-out group-hover:scale-[1.04] group-hover:border-zinc-700/80 group-hover:bg-zinc-800/70"
-        title={name}
-      >
+    <div className="group flex h-8 w-8 cursor-default items-center justify-center" title={name}>
+      <div className="transition-transform duration-200 ease-out group-hover:scale-[1.05]">
         {dev ? (
           <Image
             src={dev}
