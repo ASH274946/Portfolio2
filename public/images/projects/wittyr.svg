@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="100%" height="100%" fill="#140f0a"/>
+  <rect x="80" y="80" width="1120" height="560" rx="16" fill="#181411" stroke="#2a221e"/>
+  <text x="640" y="360" text-anchor="middle" fill="#3d332c" font-family="system-ui,sans-serif" font-size="28">Wittyr  preview</text>
+</svg>
