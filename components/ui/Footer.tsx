@@ -43,7 +43,7 @@ export default function Footer() {
 
   return (
     <footer className="relative z-10 mt-12 border-t border-white/[0.06] py-8">
-      <div className="mx-auto mb-6 grid max-w-3xl gap-3 px-6 md:grid-cols-[2fr_1fr] lg:px-0">
+      <div className="mx-auto mb-10 grid max-w-3xl gap-4 px-6 md:grid-cols-[2fr_1fr] lg:px-0">
         <div className="rounded-2xl border border-zinc-800/80 bg-zinc-900/35 p-5">
           <p className="text-sm leading-relaxed text-zinc-200">&quot;{activeQuote.text}&quot;</p>
           <p className="mt-2 text-xs text-zinc-500">- {activeQuote.author}</p>
